@@ -1,1 +1,1 @@
-//include ':abc-constraints', ':abc-diceroller'
+//include ':abc-constraints', ':abc-diceroller', ':abc-stringlist'

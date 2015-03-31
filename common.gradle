@@ -2,8 +2,8 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-String mavenGroupId = 'org.gregory.abc'
-String mavenVersion = '1.0-SNAPSHOT'
+String mavenGroupId = 'abc.core'
+String mavenVersion = '0.1-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
