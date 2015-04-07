@@ -1,4 +1,4 @@
-package org.gregory.abc.constraint;
+package abc.constraint;
 
 
 /**

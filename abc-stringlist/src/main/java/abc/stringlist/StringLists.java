@@ -1,4 +1,5 @@
 package abc.stringlist;
+import abc.stringlist.listable.AStringList;
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +24,7 @@ public class StringLists {
     instance = new StringLists();
   }
 
-  private final Map<String, StringList> stringLists;
+  private final Map<String, AStringList> stringLists;
 
   {
     stringLists = new ConcurrentHashMap<>(0);
@@ -36,11 +37,15 @@ public class StringLists {
     return stringLists.get(s).getRandomString();
   }
 
-  public final StringList getStringList(String s) {
+  public final AStringList getStringList(String s) {
     return stringLists.get(s);
   }
 
-  public final void addStringList(String s, StringList l) {
+  public final void addStringList(String s, AStringList l) {
+    stringLists.put(s, l);
+  }
+
+  public final void addStringList(String s, AStringList... l) {
   }
 
   public final void delStringList(String s) {

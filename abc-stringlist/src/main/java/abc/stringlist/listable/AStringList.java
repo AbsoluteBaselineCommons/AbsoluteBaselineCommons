@@ -1,4 +1,4 @@
-package abc.stringlist;
+package abc.stringlist.listable;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,41 +12,41 @@ import java.util.logging.Logger;
 
 
 /**
- * <h2>StringList</h2>
+ * <h2>AStringList</h2>
  * A single string list object. This class contains fields and methods for setting and getting string values from lists
  * (a String-based array).
  * @author Gregory
  */
-public class StringList {
+abstract public class AStringList {
   /**
    * The source file. This is the abstract path to the file data.
    */
-  private final File file;
+  protected final File file;
   /**
    * The randomizer. This is used with {@code turnover} to obtain a random position in the array, for the returned
    * object.
    */
-  private final Random random;
+  protected final Random random;
   /**
    * The string list.
    */
-  private final String[] stringsLast;
-  private final String[] stringsNext;
+  protected final String[] stringsLast;
+  protected final String[] stringsNext;
   /**
    * Use a reverse method.
    */
-  private final boolean reversable;
+  protected final boolean reversable;
   /**
    * The turn-over rate. This is the factor that represents the array-subset of objects where our returned value can be
    * obtained.
    */
-  private final double turnover;   // the turnover factor; this is multiplied by the total array size, to
+  protected final double turnover;   // the turnover factor; this is multiplied by the total array size, to
 
   {
     random = new Random(System.currentTimeMillis());
   }
 
-  public StringList(boolean b, double d, File f) {
+  public AStringList(boolean b, double d, File f) {
     reversable = b;
     file = f;
     stringsLast = parse();
@@ -54,7 +54,7 @@ public class StringList {
     turnover = d;
   }
 
-  private String[] parse() {
+  protected String[] parse() {
     List<String> list;
     String[] stringlist = null;
     if(file.exists() && file.isFile() && file.canRead()) {
@@ -62,9 +62,9 @@ public class StringList {
       try(FileInputStream fis = new FileInputStream(file)) {
         BufferedInputStream bis = new BufferedInputStream(fis);
       } catch(FileNotFoundException ex) {
-        Logger.getLogger(StringList.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AStringList.class.getName()).log(Level.SEVERE, null, ex);
       } catch(IOException ex) {
-        Logger.getLogger(StringList.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AStringList.class.getName()).log(Level.SEVERE, null, ex);
       }
     }
     return stringlist;
