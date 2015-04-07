@@ -1,4 +1,5 @@
 package abc.stringlist.listable;
+import abc.errorlogs.log.AbcLogger;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -49,8 +48,8 @@ abstract public class AStringList {
   public AStringList(boolean b, double d, File f) {
     reversable = b;
     file = f;
-    stringsLast = parse();
-    stringsNext = parse();
+    stringsLast = AStringList.this.parse();
+    stringsNext = AStringList.this.parse();
     turnover = d;
   }
 
@@ -62,9 +61,9 @@ abstract public class AStringList {
       try(FileInputStream fis = new FileInputStream(file)) {
         BufferedInputStream bis = new BufferedInputStream(fis);
       } catch(FileNotFoundException ex) {
-        Logger.getLogger(AStringList.class.getName()).log(Level.SEVERE, null, ex);
+        AbcLogger.logThis(AbcLogger.L1, "AStringList.parse() threw a FileNotFoundException; file was " + file.getAbsolutePath(), ex);
       } catch(IOException ex) {
-        Logger.getLogger(AStringList.class.getName()).log(Level.SEVERE, null, ex);
+        AbcLogger.logThis(AbcLogger.L1, "AStringList.parse() threw a IOException.", ex);
       }
     }
     return stringlist;

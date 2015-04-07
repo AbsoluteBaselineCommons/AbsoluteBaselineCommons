@@ -22,7 +22,7 @@ public class AbcLogger {
    */
   private static final Level defaultLevel;
   /**
-   * The active logger object. This is initialized as a logger object using the name "BeyondRM".
+   * The active logger object. This is initialized as a logger object using the name "crash_log".
    * @see AbcLogger
    */
   private static final Logger logger;
@@ -101,7 +101,7 @@ public class AbcLogger {
 
   /**
    * A private constructor. Goes nowhere, does nothing...
-   * @see PlatformBaselineLogger
+   * @see AbcLogger
    */
   private AbcLogger() {
   }
@@ -149,16 +149,6 @@ public class AbcLogger {
     } else {
       return defaultLevel;
     }
-  }
-
-  /**
-   * Get the logger. This remains as a convenience method, to obtain the current logger instance; we should use the new
-   * static logging methods, also contained herein.
-   * @return A {@link Logger} instance.
-   * @see AbcLogger
-   */
-  public static final Logger getLogger() {
-    return logger;
   }
 
   /**

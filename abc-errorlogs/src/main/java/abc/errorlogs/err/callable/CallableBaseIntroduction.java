@@ -11,11 +11,11 @@ import java.util.concurrent.Callable;
  */
 public class CallableBaseIntroduction implements Callable<String> {
   private final ResourceBundle bundle;
-  private final String[] message;
+  private final String[] strings;
 
   public CallableBaseIntroduction() {
-    bundle = ResourceBundle.getBundle("brm.platform.baseline.crashing.callable.bundles.Callable");
-    message = new String[] {
+    bundle = ResourceBundle.getBundle("abc.errorlogs.i18n.Callable");
+    strings = new String[] {
       "callable.intro0", "callable.intro1", "callable.intro2", "callable.intro3", "callable.intro4", "callable.intro5",
       "callable.intro6", "callable.intro7", "callable.intro8", "callable.intro9", "callable.introA", "callable.introB"
     };
@@ -23,12 +23,12 @@ public class CallableBaseIntroduction implements Callable<String> {
 
   @Override
   public String call() {
-    String s = "";
-    for(String string : message) {
-      s += bundle.getString(string);
-      s += "\n";
+    String output = "";
+    output += "======================================== CREATE TRANSMISSION ========================================\n";
+    for(String string : strings) {
+      output += String.format("%s\n", bundle.getString(string));
     }
-    s += "========================================\n";
-    return s;
+    output += "======================================== FINISH TRANSMISSION ========================================\n";
+    return output;
   }
 }
