@@ -1,1 +1,1 @@
-//include ':abc-constraints', ':abc-diceroller', ':abc-errorlogs', ':abc-stringlist'
+//include ':abc-constraints', ':abc-cryptology', ':abc-diceroller', ':abc-errorlogs', ':abc-stringlist'
