@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package abc.constraint;
 
 
 /**
- *
+ * <h2>ConstrainLong</h2>
+ * Constrain a long value. This class has static methods to constrain a {@link Long} value in some specific ways.
  * @author Gregory
  */
 public class ConstrainLong {
+
+  private ConstrainLong() {
+  }
 
   /**
    * A public method to get whether a value is within a particular range.
