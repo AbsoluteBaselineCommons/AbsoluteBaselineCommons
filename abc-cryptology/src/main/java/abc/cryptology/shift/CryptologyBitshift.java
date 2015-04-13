@@ -1,4 +1,4 @@
-package abc.cryptology;
+package abc.cryptology.shift;
 
 
 /**
