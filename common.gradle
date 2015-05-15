@@ -25,7 +25,7 @@ String mavenArtifactId = name
 group = mavenGroupId
 version = mavenVersion
 
-task sourcesJar(type: Jar, dependsOn: classes, description: 'Creates a jar from the source files.') {
+task sourcesJar(type:Jar, dependsOn:classes, description:'Creates a jar from the source files.') {
   classifier = 'sources'
   from sourceSets.main.allSource
 }
@@ -43,7 +43,7 @@ configure(install.repositories.mavenInstaller) {
   }
 }
 
-task createFolders(description: 'Creates the source folders if they do not exist.') doLast {
+task createFolders(description:'Creates the source folders if they do not exist.') doLast {
   sourceSets*.allSource*.srcDirs*.each { File srcDir ->
     if (!srcDir.isDirectory()) {
       println "Creating source folder: ${srcDir}"

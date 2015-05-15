@@ -1,1 +1,1 @@
-//include ':abc-constraints', ':abc-cryptology', ':abc-diceroller', ':abc-errorlogs', ':abc-stringlist'
+// includesinclude\':abc-constraints',\':abc-cryptology',\':abc-diceroller',\':abc-errorlogs',\':abc-stringlist'//Generic ideas for future library inclusion://  unit conversions between metric and standard? not sure if such a library already exists.
