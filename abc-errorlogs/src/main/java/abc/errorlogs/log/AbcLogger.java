@@ -86,7 +86,7 @@ public class AbcLogger {
 
   static {
     defaultLevel = Level.INFO;
-    logger = Logger.getLogger("AbcLogger", "abc.errorlogs.i18n.Loggable");
+    logger = Logger.getLogger("AbcLogger", "abc.errorlogs.i18n.AbcLogger");
     logger.setLevel(Level.ALL);
     L0 = Level.OFF.intValue();
     L1 = Level.SEVERE.intValue();
