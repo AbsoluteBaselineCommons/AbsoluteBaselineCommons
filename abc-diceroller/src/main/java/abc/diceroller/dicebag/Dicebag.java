@@ -1,6 +1,7 @@
 package abc.diceroller.dicebag;
 import abc.diceroller.enums.RollMode;
 
+
 /**
  * <h2>Dicebag</h2>
  * The dice bag. This is the object from which an ordinary roll-sequence can be obtained.
@@ -13,14 +14,19 @@ public class Dicebag {
   /**
    * A public constructor. This instantiates what amounts to a "dice bag" in tabletop role-playing games, with the dice
    * being set to a "percentile" die.
+   * @param rm A {@link RollMode} instance, representing the {@link #mode mode}.
+   * @see Dicebag
    */
   public Dicebag(RollMode rm) {
-    this(RollMode.add, new Dice());
+    this(rm, new Dice());
   }
 
   /**
    * A public constructor. This instantiates what amounts to a "dice bag" in tabletop role-playing games, with the dice
    * being set to the dice parameters.
+   * @param rm
+   * @param ds
+   * @see Dicebag
    */
   public Dicebag(RollMode rm, Dice... ds) {
     mode = rm;
@@ -28,8 +34,10 @@ public class Dicebag {
   }
 
   /**
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
-  private final int doRollModeAdd() {
+  private int doRollModeAdd() {
     // for starting purposes, we are just implementing the RollMode.add at this time...
     int sum = 0;
     if(dice.length >= 1) {
@@ -41,8 +49,10 @@ public class Dicebag {
   }
 
   /**
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
-  private final int doRollModeAminusB() {
+  private int doRollModeAminusB() {
     // for starting purposes, we are just implementing the RollMode.add at this time...
     int sum = dice[0].roll();
     if(dice.length >= 1) {
@@ -54,39 +64,48 @@ public class Dicebag {
   }
 
   /**
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
-  private final int doRollModeAvg() {
+  private int doRollModeAvg() {
     return doRollModeAdd() / dice.length;
   }
 
   /**
    * @deprecated Not really; just not fully implemented yet.
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
   @Deprecated
-  private final int doRollModeHigh() {
+  private int doRollModeHigh() {
     //TODO: The dice should also have a method to return the result as a list...
     return 0;
   }
 
   /**
    * @deprecated Not really; just not fully implemented yet.
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
   @Deprecated
-  private final int doRollModeLow() {
+  private int doRollModeLow() {
     //TODO: The dice should also have a method to return the result as a list...
     return 0;
   }
 
   /**
    * @deprecated Not really; just not fully implemented yet.
+   * @return An {@link Integer} value.
+   * @see Dicebag
    */
   @Deprecated
-  private final int doRollModeNul() {
+  private int doRollModeNul() {
     return 0;
   }
 
   /**
    * Roll all the dice. This is used to obtain the full value of the cumulative pool of dice.
+   * @return An {@link Integer} value.
    */
   public final int roll() {
     switch(mode) {
