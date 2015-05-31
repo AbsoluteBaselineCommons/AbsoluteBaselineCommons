@@ -97,8 +97,7 @@ abstract class AEncryption {
 
   /**
    * Perform a cryptographic load operation. This method uses the {@link #logic logic} object, which should have been
-   * instantiated in the constructor. In the overridden method, perform whatever reading methodology via the methods in
-   * {@link DataInputStream}, to fully import all values.
+   * instantiated in the constructor.
    * <p/>
    * The {@link Encryption#cryptoLoad(File,ACryptoLogic,String)} implementation closes the input stream.
    * @param f A {@link File} object, representing the source file.
@@ -109,8 +108,7 @@ abstract class AEncryption {
 
   /**
    * Perform a cryptographic save operation. This method uses the {@link #logic logic} object, which should have been
-   * instantiated in the constructor. In the overridden method, perform whatever writing methodology via the methods in
-   * {@link DataOutputStream}, to fully export all values.
+   * instantiated in the constructor.
    * <p/>
    * The {@link Encryption#cryptoSave(File,ACryptoLogic,String)} implementation flushes and closes the output stream.
    * @param f A {@link File} object, representing the target file.

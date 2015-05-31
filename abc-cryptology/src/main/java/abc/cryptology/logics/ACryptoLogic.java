@@ -5,9 +5,9 @@ import java.io.IOException;
 
 
 /**
- * <h2>ACryptoLogic</h2>
- * A crypto-logic definition. This defines how the data input and output streams are used. It is the primary way to use
- * the {@link AbcCryptoLogic}
+ * Definition of cryptographic logic. This defines how data input and output streams are used in cryptography of data.
+ * Besides the singleton class {@link AbcCryptology}, this is the only class you need to subclass to make your own type
+ * of serialization.
  * <h3>Cautions and Warnings.</h3>
  * Care must be taken that both the {@link #performDecryption(DataInputStream) performDecryption(DataInputStream)} and
  * the {@link #performEncryption(DataOutputStream) performEncryption(DataOutputStream)} methods are loading and saving
@@ -35,6 +35,7 @@ abstract public class ACryptoLogic {
    * <p/>
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dis A {@link DataInputStream} object, representing the stream to read.
+   * @throws IOException on any file-io exceptions.
    * @see ACryptoLogic
    * @see #performEncryption(DataOutputStream) performEncryption(DataOutputStream)
    */
@@ -46,6 +47,7 @@ abstract public class ACryptoLogic {
    * <p/>
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dos A {@link DataOutputStream} object, representing the stream to write.
+   * @throws java.io.IOException on any file-io exceptions.
    * @see ACryptoLogic
    * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
    */
