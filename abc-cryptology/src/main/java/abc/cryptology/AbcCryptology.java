@@ -6,7 +6,7 @@ import java.io.File;
 /**
  * <h2>AbcCryptology</h2>
  * A cryptology implementation. This static class defines the methodology of a plain-Java cryptology implementation.
- * <h3>Final Note.</h3>
+ * <h3>Final Note</h3>
  * Originally from MrDeathJockey's YouTube video, named "Enhanced String encryption with PBE, DES and MD5 - Java
  * Intermediate Tutorial #18", the contents of the {@link Encryption} class was heavily modified to be what it is now.
  * I have tweaked several things: I created an abstract class AEncryption to be the parent of Encryption to introduce a

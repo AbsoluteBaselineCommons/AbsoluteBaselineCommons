@@ -8,7 +8,7 @@ import java.io.IOException;
  * Definition of cryptographic logic. This defines how data input and output streams are used in cryptography of data.
  * Besides the singleton class {@link AbcCryptology}, this is the only class you need to subclass to make your own type
  * of serialization.
- * <h3>Cautions and Warnings.</h3>
+ * <h3>Cautions and Warnings</h3>
  * Care must be taken that both the {@link #performDecryption(DataInputStream) performDecryption(DataInputStream)} and
  * the {@link #performEncryption(DataOutputStream) performEncryption(DataOutputStream)} methods are loading and saving
  * values in the same order, or else we will experience errors, somewhere down the line.

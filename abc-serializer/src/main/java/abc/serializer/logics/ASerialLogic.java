@@ -9,7 +9,7 @@ import java.io.IOException;
  * Definition of serialization logic. This defines how data input and output streams are used in serialization of data.
  * Besides the singleton class {@link Serializer}, this is the only class you need to subclass to create your own type
  * of serialization.
- * <h1>How It Works.</h1>
+ * <h1>How It Works</h1>
  * By creating a subclass of this class, and overriding its two methods, we already have the heart of the serialization
  * infrastructure. That subclass will be given as a parameter of the {@link AbcSerialize} class methods to perform the
  * #performReading(ASerialLogic, File)

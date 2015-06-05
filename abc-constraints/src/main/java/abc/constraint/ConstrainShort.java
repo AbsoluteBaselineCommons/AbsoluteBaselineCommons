@@ -2,24 +2,26 @@ package abc.constraint;
 
 
 /**
- *
+ * Constrain a short value.
  * @author Gregory
  */
 public class ConstrainShort {
+  private ConstrainShort() {
+  }
 
   /**
-   * A public method to get whether a value is within a particular range.
+   * Get whether a value is within a particular range.
    * @param val A {@link Short} value, representing the value to be tested against.
    * @param max A {@link Short} value, representing the maximum to be equal or less than.
    * @param min A {@link Short} value, representing the minimum to be equal or more than.
    * @return A {@link Boolean} value.
    */
-  public static boolean isShortInside(short val, short max, short min) {
+  public static final boolean isShortInside(short val, short max, short min) {
     return (val >= min) && (val <= max);
   }
 
   /**
-   * A public method to constrain a {@link Short} value to a maximum value.
+   * Constrain a {@link Short} value to a maximum value.
    * <p/>
    * The simple rule is that if {@code val} is more than {@code max}, this returns {@code max}, or {@code val}
    * otherwise.
@@ -27,12 +29,12 @@ public class ConstrainShort {
    * @param max A {@link Short} value, representing the maximum value to not be more than.
    * @return A {@link Short} value.
    */
-  public static short constrainShortMax(short val, short max) {
+  public static final short constrainShortMax(short val, short max) {
     return (val > max) ? max : val;
   }
 
   /**
-   * A public method to constrain a {@link Short} value to a minimum value.
+   * Constrain a {@link Short} value to a minimum value.
    * <p/>
    * The simple rule is that if {@code val} is less than {@code min}, this returns {@code min}, or {@code val}
    * otherwise.
@@ -40,13 +42,12 @@ public class ConstrainShort {
    * @param min A {@link Short} value, representing the minimum value to not be less than.
    * @return A {@link Short} value.
    */
-  public static short constrainShortMin(short val, short min) {
+  public static final short constrainShortMin(short val, short min) {
     return (val < min) ? min : val;
   }
 
   /**
-   * A public method to constrain a {@link Short} value to outside a particular range of values. The following rules
-   * apply:
+   * Constrain a {@link Short} value to outside a particular range of values. The following rules apply:
    * <ul>
    * <li/>If {@code val} is more than {@code max}, this returns {@code max}.
    * <li/>If {@code val} is less than {@code min}, this returns {@code min}.
@@ -58,12 +59,12 @@ public class ConstrainShort {
    * @param alt A {@link Short} value, representing the digit to return if not outside the max/min ranges.
    * @return A {@link Short} value.
    */
-  public static short constrainShortOuter(short val, short max, short min, short alt) {
+  public static final short constrainShortOuter(short val, short max, short min, short alt) {
     return (val > max) ? max : (val < min) ? min : alt;
   }
 
   /**
-   * A public method to constrain a {@link Short} value to a particular range of values. The following rules apply:
+   * Constrain a {@link Short} value to a particular range of values. The following rules apply:
    * <ul>
    * <li/>If {@code val} is more than {@code max}, this method returns the result of
    * {@link #constrainShortMax(short, short)}.
@@ -76,8 +77,7 @@ public class ConstrainShort {
    * @param min A {@link Short} value, representing the minimum value to not be less than.
    * @return A {@link Short} value.
    */
-  public static short constrainShortRange(short val, short max, short min) {
+  public static final short constrainShortRange(short val, short max, short min) {
     return (val > max) ? max : (val < min) ? min : val;
   }
-
 }
