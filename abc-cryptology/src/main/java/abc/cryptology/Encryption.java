@@ -13,7 +13,6 @@ import javax.crypto.CipherOutputStream;
 
 
 /**
- * <h2>Encryption</h2>
  * An encryption instance.
  * @author Gregory
  */

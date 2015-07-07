@@ -4,7 +4,6 @@ import java.io.File;
 
 
 /**
- * <h2>AbcCryptology</h2>
  * A cryptology implementation. This static class defines the methodology of a plain-Java cryptology implementation.
  * <h3>Final Note</h3>
  * Originally from MrDeathJockey's YouTube video, named "Enhanced String encryption with PBE, DES and MD5 - Java

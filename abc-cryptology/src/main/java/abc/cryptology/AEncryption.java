@@ -16,7 +16,6 @@ import javax.crypto.spec.PBEParameterSpec;
 
 
 /**
- * <h2>AEncryption</h2>
  * An encryption definition. This abstract class breaks up the {@link Encryption} class, moving some of the prototyped
  * methodology into this one, allowing Encryption to be a subclass of this one.
  * @author Gregory
