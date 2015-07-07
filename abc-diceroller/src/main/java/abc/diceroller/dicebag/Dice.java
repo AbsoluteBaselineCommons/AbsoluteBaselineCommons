@@ -3,7 +3,7 @@ import java.util.Random;
 
 
 /**
- * <h2>Dice</h2>
+ * A dice-instance. This is also used in a "dice-bag" for complex automated rolls.
  * @author Gregory
  */
 public class Dice {

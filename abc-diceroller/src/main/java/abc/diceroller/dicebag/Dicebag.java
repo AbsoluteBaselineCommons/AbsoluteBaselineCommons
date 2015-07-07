@@ -3,7 +3,6 @@ import abc.diceroller.enums.RollMode;
 
 
 /**
- * <h2>Dicebag</h2>
  * The dice bag. This is the object from which an ordinary roll-sequence can be obtained.
  * @author Gregory
  */

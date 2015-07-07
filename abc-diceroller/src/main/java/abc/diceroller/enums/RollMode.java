@@ -2,27 +2,29 @@ package abc.diceroller.enums;
 
 
 /**
- *
+ * The dice-roll methodology. This is the enumerated types for multi-dice operations, defining how more than one values
+ * will be summed or selected.
  * @author Gregory
  */
 public enum RollMode {
   /**
-   * Use the dice sum.
+   * Use the dice sum. All values are added together and returned as-is.
    * @see RollMode
    */
   add,
   /**
-   * Use the dice average.
+   * Use the dice average. All values are added together, as with {@link #add add}, but divided by the total number of
+   * dice, in order to obtain an average value.
    * @see RollMode
    */
   avg,
   /**
-   * Use the high value.
+   * Use the high value. The highest value is returned.
    * @see RollMode
    */
   high,
   /**
-   * Use the low value.
+   * Use the low value. The lowest value is returned.
    * @see RollMode
    */
   low,
@@ -41,7 +43,7 @@ public enum RollMode {
    */
   AplusB,
   /**
-   * Use the low value.
+   * (no operation)
    * @see RollMode
    */
   nul;
