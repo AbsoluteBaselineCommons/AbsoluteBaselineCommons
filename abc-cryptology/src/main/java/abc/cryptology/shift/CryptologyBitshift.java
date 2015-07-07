@@ -2,7 +2,6 @@ package abc.cryptology.shift;
 
 
 /**
- * <h2>CryptologyBitshift</h2>
  * The cryptology "bit-shift" implementation. This is a little less "crypto-secure" than my implementation that is from
  * {@link AbcCryptology} class, although it is still useful for lesser-demanding methodologies, or even in cooperation
  * with aspects of {@code AbcCryptology} itself.

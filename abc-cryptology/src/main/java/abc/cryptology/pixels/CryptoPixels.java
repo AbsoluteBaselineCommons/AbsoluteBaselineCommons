@@ -6,7 +6,6 @@ import java.util.List;
 
 
 /**
- * <h2>CryptoPixels</h2>
  * Encode and decode on a per-pixel basis. This "graphics helper" class allows interpreting to or from pixel-based data
  * via "pseudo-cryptology" techniques.
  * <p/>
