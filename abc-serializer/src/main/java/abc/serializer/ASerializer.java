@@ -4,8 +4,7 @@ import java.io.File;
 
 
 /**
- * <h2>ASerializer</h2>
- * something
+ * A serializable abstract class.
  * @author Gregory
  */
 abstract class ASerializer {

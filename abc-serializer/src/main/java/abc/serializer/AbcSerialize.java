@@ -4,8 +4,7 @@ import java.io.File;
 
 
 /**
- * <h2>AbcSerialize</h2>
- * something
+ * The serialization core class.
  * @author Gregory
  * @see #instance instance
  * @see #AbcSerialize() AbcSerialize()
