@@ -1,20 +1,26 @@
 package abc.cryptology;
 import abc.cryptology.logics.ACryptoLogic;
-import abc.errorlogs.log.AbcLogger;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
+import javax.crypto.NoSuchPaddingException;
 
 
 /**
- * An encryption instance.
+ * An encryption instance. This subclass defines the implementation of an encryption methodology.
  * @author Gregory
+ * @see AEncryption
  */
 class Encryption extends AEncryption {
   /**
@@ -33,32 +39,30 @@ class Encryption extends AEncryption {
   }
 
   @Override
-  protected void performDecrypting(File f, String s) {
+  protected void performDecrypting(File f, String s) throws NoSuchAlgorithmException, InvalidKeySpecException,
+      NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, FileNotFoundException,
+      IOException {
     if(f != null && f.exists() && logic != null && s != null && !s.isEmpty()) {
       Cipher cipher = getCipher(seed, Cipher.DECRYPT_MODE, s);
-      try(FileInputStream fis = new FileInputStream(f);
-          CipherInputStream cis = new CipherInputStream(fis, cipher);
-          DataInputStream dis = new DataInputStream(cis)) {
+      FileInputStream fis = new FileInputStream(f);
+      CipherInputStream cis = new CipherInputStream(fis, cipher);
+      try(DataInputStream dis = new DataInputStream(cis)) {
         logic.performDecryption(dis);
-        dis.close();
-      } catch(IOException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "Encryption.performDecrypting(File,String) encountered an IOException", ex);
       }
     }
   }
 
   @Override
-  protected void performEncrypting(File f, String s) {
+  protected void performEncrypting(File f, String s) throws NoSuchAlgorithmException, InvalidKeySpecException,
+      NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, FileNotFoundException,
+      IOException {
     if(f != null && f.exists() && logic != null && s != null && !s.isEmpty()) {
       Cipher cipher = getCipher(seed, Cipher.ENCRYPT_MODE, s);
-      try(FileOutputStream fos = new FileOutputStream(f);
-          CipherOutputStream cos = new CipherOutputStream(fos, cipher);
-          DataOutputStream dos = new DataOutputStream(cos)) {
+      FileOutputStream fos = new FileOutputStream(f);
+      CipherOutputStream cos = new CipherOutputStream(fos, cipher);
+      try(DataOutputStream dos = new DataOutputStream(cos)) {
         logic.performEncryption(dos);
         dos.flush();
-        dos.close();
-      } catch(IOException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "Encryption.performEncrypting(File,String) encountered an IOException", ex);
       }
     }
   }

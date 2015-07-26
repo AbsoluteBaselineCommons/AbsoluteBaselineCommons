@@ -12,11 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p/>
  * @author Gregory
  * @see #instance instance
- * @see #StringLists StringLists
+ * @see #map stringLists
  */
 public class StringLists {
   /**
-   * The default {@link StringLists} instance.
+   * The default instance.
+   * @see StringLists
    */
   public static final StringLists instance;
 
@@ -24,31 +25,68 @@ public class StringLists {
     instance = new StringLists();
   }
 
-  private final Map<String, AStringList> stringLists;
+  /**
+   * A map of string lists.
+   * @see StringLists
+   */
+  private final Map<String, AStringList> map;
 
   {
-    stringLists = new ConcurrentHashMap<>(0);
+    map = new ConcurrentHashMap<>(0);
   }
 
+  /**
+   * A private constructor.
+   * @see StringLists
+   */
   private StringLists() {
   }
 
+  /**
+   * Get a random string from a specified list.
+   * @param s A {@link String} object, representing the list name.
+   * @return A {@link String} object.
+   * @see StringLists
+   */
   public final String getRandomString(String s) {
-    return stringLists.get(s).getRandomString();
+    return map.get(s).getRandomString();
   }
 
+  /**
+   * Get a specified string list.
+   * @param s A {@link String} object, representing the list name.
+   * @return An {@link AStringList} object.
+   * @see StringLists
+   */
   public final AStringList getStringList(String s) {
-    return stringLists.get(s);
+    return map.get(s);
   }
 
+  /**
+   * Add a string list.
+   * @param s A {@link String} object, representing the list name.
+   * @param l A {@link AStringList} object, representing a list object.
+   * @see StringLists
+   */
   public final void addStringList(String s, AStringList l) {
-    stringLists.put(s, l);
+    map.put(s, l);
   }
 
+  /**
+   * Add some string lists.
+   * @param s A {@link String} object, representing the list name.
+   * @param l A {@link AStringList} object, representing a list array.
+   * @see StringLists
+   */
   public final void addStringList(String s, AStringList... l) {
   }
 
+  /**
+   * Delete a string list.
+   * @param s A {@link String} object, representing the list name.
+   * @see StringLists
+   */
   public final void delStringList(String s) {
-    stringLists.remove(s);
+    map.remove(s);
   }
 }

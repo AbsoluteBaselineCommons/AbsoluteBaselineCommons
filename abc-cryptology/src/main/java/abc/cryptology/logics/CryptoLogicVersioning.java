@@ -13,6 +13,10 @@ import java.io.IOException;
  * another. For some cases, it is merely a matter of reading one or more additional values, for others it's a matter of
  * skipping the reading of some previous-version values.</blockquote>
  * @author Gregory
+ * @see #versioning versioning
+ * @see #CryptoLogicVersioning(byte[]) CryptoLogicVersioning(byte[])
+ * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
+ * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
 public class CryptoLogicVersioning extends ACryptoLogic {
   /**
@@ -35,6 +39,7 @@ public class CryptoLogicVersioning extends ACryptoLogic {
    * @see ACryptoLogic
    */
   public CryptoLogicVersioning(byte[] bs) {
+    super();
     versioning = bs;
   }
 

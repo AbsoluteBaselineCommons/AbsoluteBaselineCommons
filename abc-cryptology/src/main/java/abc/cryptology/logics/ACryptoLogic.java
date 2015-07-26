@@ -16,6 +16,9 @@ import java.io.IOException;
  * <p/>
  * Besides the above two methods defined herein, do we also need to provide for key unwrapping and key wrapping?
  * @author Gregory
+ * @see #ACryptoLogic() ACryptoLogic()
+ * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
+ * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
 abstract public class ACryptoLogic {
   /**

@@ -13,9 +13,25 @@ package abc.cryptology.shift;
  * @see #encrypt(String)
  */
 public class CryptologyBitshift {
+  /**
+   * A key-chain array.
+   * @see CryptologyBitshift
+   */
   private static final int[] keychain;
+  /**
+   * The character's integer value.
+   * @see CryptologyBitshift
+   */
   private static char ch;
+  /**
+   * The character in the key-chain.
+   * @see CryptologyBitshift
+   */
   private static int ck;
+  /**
+   * The length of the string.
+   * @see CryptologyBitshift
+   */
   private static int length;
 
   static {
@@ -26,9 +42,17 @@ public class CryptologyBitshift {
     clear();
   }
 
+  /**
+   * A private constructor. Goes nowhere, does nothing.
+   * @see CryptologyBitshift
+   */
   private CryptologyBitshift() {
   }
 
+  /**
+   * Clear the values. This ensures encoding and decoding values cannot be "copied" from memory....
+   * @see CryptologyBitshift
+   */
   private static void clear() {
     length = Integer.MIN_VALUE;
     ch = Character.MIN_VALUE;

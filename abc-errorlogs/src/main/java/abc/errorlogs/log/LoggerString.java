@@ -2,7 +2,7 @@ package abc.errorlogs.log;
 
 
 /**
- *
+ * The logger strings. This is basically for internationalization and localization of the logger messages, if needed.
  * @author Gregory
  */
 public enum LoggerString {

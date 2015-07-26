@@ -1,6 +1,6 @@
 package abc.stringlist.listable;
-import abc.errorlogs.log.AbcLogger;
 import java.io.BufferedInputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,25 +19,34 @@ import java.util.Random;
 abstract public class AStringList {
   /**
    * The source file. This is the abstract path to the file data.
+   * @see AStringList
    */
   protected final File file;
   /**
    * The randomizer. This is used with {@code turnover} to obtain a random position in the array, for the returned
    * object.
+   * @see AStringList
    */
   protected final Random random;
   /**
-   * The string list.
+   * The last string list.
+   * @see AStringList
    */
   protected final String[] stringsLast;
+  /**
+   * The next string list.
+   * @see AStringList
+   */
   protected final String[] stringsNext;
   /**
    * Use a reverse method.
+   * @see AStringList
    */
   protected final boolean reversable;
   /**
    * The turn-over rate. This is the factor that represents the array-subset of objects where our returned value can be
    * obtained.
+   * @see AStringList
    */
   protected final double turnover;   // the turnover factor; this is multiplied by the total array size, to
 
@@ -45,7 +54,15 @@ abstract public class AStringList {
     random = new Random(System.currentTimeMillis());
   }
 
-  public AStringList(boolean b, double d, File f) {
+  /**
+   * A public constructor.
+   * @param b A {@link Boolean} condition, representing whether the list is reversable.
+   * @param d A {@link Double} value, representing the turnover rate.
+   * @param f A {@link File} object, representing the file for the list.
+   * @throws java.io.FileNotFoundException
+   * @see AStringList
+   */
+  public AStringList(boolean b, double d, File f) throws FileNotFoundException, IOException {
     reversable = b;
     file = f;
     stringsLast = AStringList.this.parse();
@@ -53,22 +70,33 @@ abstract public class AStringList {
     turnover = d;
   }
 
-  protected String[] parse() {
-    List<String> list;
-    String[] stringlist = null;
+  /**
+   * Parse the file list.
+   * @return A {@link String} array.
+   * @throws java.io.FileNotFoundException
+   * @see AStringList
+   */
+  protected String[] parse() throws FileNotFoundException, IOException {
+    List<String> list = new ArrayList<>(0);
     if(file.exists() && file.isFile() && file.canRead()) {
-      list = new ArrayList<>((int)file.length() / 8);
-      try(FileInputStream fis = new FileInputStream(file)) {
-        BufferedInputStream bis = new BufferedInputStream(fis);
-      } catch(FileNotFoundException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "AStringList.parse() threw a FileNotFoundException; file was " + file.getAbsolutePath(), ex);
-      } catch(IOException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "AStringList.parse() threw a IOException.", ex);
+      FileInputStream fis = new FileInputStream(file);
+      BufferedInputStream bis = new BufferedInputStream(fis);
+      DataInputStream dis = new DataInputStream(bis);
+      int i = dis.readInt();
+      while(i > 0) {
+        String s = dis.readUTF();
+        list.add(s);
+        i--;
       }
     }
-    return stringlist;
+    return (String[])list.toArray();
   }
 
+  /**
+   * Get a random string.
+   * @return A {@link String} object.
+   * @see AStringList
+   */
   public String getRandomString() {
     int i = random.nextInt((int)Math.floor(stringsNext.length * turnover));
     String s = stringsNext[i];

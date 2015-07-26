@@ -4,10 +4,10 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableBaseIntroduction</h2>
  * A callable baseline introduction instance. This is for beginning an error log with a localizable message to send the
  * error report to the development team, or report it to the Github repository's issue tracker&hellip;.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableBaseIntroduction implements Callable<String> {
   private final ResourceBundle bundle;

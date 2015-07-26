@@ -3,8 +3,10 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableVersionGameCore</h2>
+ * A callable memory-statistics report. This adds to the error-log various aspects of the user's memory specifications.
+ * It tells the maximum JVM memory, the total JVM memory, and the current free JVM memory.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableMemoryStatistics implements Callable<String> {
   @Override
@@ -14,9 +16,8 @@ public class CallableMemoryStatistics implements Callable<String> {
     long j = runtime.totalMemory();
     long k = runtime.freeMemory();
     long l = i / 1024L / 1024L;
-    long i1 = j / 1024L / 1024L;
-    long j1 = k / 1024L / 1024L;
-    return String.format("%s bytes (%s MB) / %s bytes (%s MB) up to %s bytes (%s MB)",
-                         k, j1, j, i1, i, l);
+    long m = j / 1024L / 1024L;
+    long n = k / 1024L / 1024L;
+    return String.format("%s bytes (%s MB) / %s bytes (%s MB) up to %s bytes (%s MB)", k, n, j, m, i, l);
   }
 }

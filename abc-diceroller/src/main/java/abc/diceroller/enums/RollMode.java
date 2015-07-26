@@ -5,6 +5,13 @@ package abc.diceroller.enums;
  * The dice-roll methodology. This is the enumerated types for multi-dice operations, defining how more than one values
  * will be summed or selected.
  * @author Gregory
+ * @see #add add
+ * @see #avg avg
+ * @see #high high
+ * @see #low low
+ * @see #AminusB AminusB
+ * @see #AplusB AplusB
+ * @see #nul nul
  */
 public enum RollMode {
   /**
@@ -43,8 +50,9 @@ public enum RollMode {
    */
   AplusB,
   /**
-   * (no operation)
+   * No operation is performed.
    * @see RollMode
    */
   nul;
+  //TODO: Add additional roll-modes as necessary; for the most part, what is here should work for most cases.
 }

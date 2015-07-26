@@ -8,10 +8,22 @@ import java.io.IOException;
  * The cryptographic logic of String arrays. This allows reading and writing lists of {@link String} object data in an
  * automatic manner.
  * @author Gregory
+ * @see #CryptoLogicVersioning(byte[]) CryptoLogicVersioning(byte[])
+ * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
+ * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
 public class CryptoLogicArrayStrings extends ACryptoLogic {
+  /**
+   * A string array.
+   * @see CryptoLogicArrayStrings
+   */
   private String[] strings;
 
+  /**
+   * A public constructor. Only sets the string array.
+   * @param ss A {@link String} array, representing the {@link #strings strings} to set.
+   * @see CryptoLogicArrayStrings
+   */
   public CryptoLogicArrayStrings(String[] ss) {
     strings = ss;
   }
@@ -38,7 +50,8 @@ public class CryptoLogicArrayStrings extends ACryptoLogic {
 
   /**
    * Get the array of strings. If {@link #strings strings} is empty, returns a new single-item null String array.
-   * @return A {@link String} array;
+   * @return A {@link String} array.
+   * @see CryptoLogicArrayStrings
    */
   public final String[] getStrings() {
     return (strings == null) ? new String[] {""} : strings.clone();

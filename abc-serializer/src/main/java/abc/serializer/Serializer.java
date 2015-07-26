@@ -1,10 +1,10 @@
 package abc.serializer;
-import abc.errorlogs.log.AbcLogger;
 import abc.serializer.logics.ASerialLogic;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -19,28 +19,22 @@ class Serializer extends ASerializer {
   }
 
   @Override
-  protected void serialReading(File f) {
+  protected void serialReading(File f) throws FileNotFoundException, IOException {
     if(f != null && f.exists() && logic != null) {
-      try(FileInputStream fis = new FileInputStream(f);
-          DataInputStream dis = new DataInputStream(fis)) {
-        //logic.serialReading(dis);
-        dis.close();
-      } catch(IOException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "Serializer.serialReading(File) encountered an IOException", ex);
+      FileInputStream fis = new FileInputStream(f);
+      try(DataInputStream dis = new DataInputStream(fis)) {
+        logic.serialReading(dis);
       }
     }
   }
 
   @Override
-  protected void serialWriting(File f) {
+  protected void serialWriting(File f) throws FileNotFoundException, IOException {
     if(f != null && f.exists() && logic != null) {
-      try(FileOutputStream fos = new FileOutputStream(f);
-          DataOutputStream dos = new DataOutputStream(fos)) {
-        //logic.serialWriting(dos);
-        //dos.flush();
-        //dos.close();
-      } catch(IOException ex) {
-        AbcLogger.logThis(AbcLogger.L1, "Serializer.serialWriting(File) encountered an IOException", ex);
+      FileOutputStream fos = new FileOutputStream(f);
+      try(DataOutputStream dos = new DataOutputStream(fos)) {
+        logic.serialWriting(dos);
+        dos.flush();
       }
     }
   }

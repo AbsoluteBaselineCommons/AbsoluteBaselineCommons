@@ -3,8 +3,9 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableAppVer</h2>
+ * A callable version report of the Java architecture.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableVersionJavaArch implements Callable<String> {
   @Override

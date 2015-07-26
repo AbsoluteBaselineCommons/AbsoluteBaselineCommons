@@ -1,7 +1,8 @@
 package abc.cryptology;
 import abc.cryptology.logics.ACryptoLogic;
-import abc.errorlogs.log.AbcLogger;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -20,12 +21,19 @@ import javax.crypto.spec.PBEParameterSpec;
  * methodology into this one, allowing Encryption to be a subclass of this one.
  * @author Gregory
  * @see #logic logic
- * @see #AEncryption(ACryptoLogic,String) AEncryption(ACryptoLogic,String)
- * @see #getCipher(int,String) getCipher(int,String)
+ * @see #seed seed
+ * @see #AEncryption(long,ACryptoLogic,String) AEncryption(long,ACryptoLogic,String)
+ * @see #getCipher(long,int,String) getCipher(long,int,String)
  * @see #performDecrypting(File,String) performDecrypting(File,String)
  * @see #performEncrypting(File,String) performEncrypting(File,String)
  */
 abstract class AEncryption {
+  /**
+   * The cryptographic type. This is meant to be something like "{@code PBEWithMD5AndDES}".
+   * @see AEncryption
+   * @see String
+   * @see #getCipher(long,int,String) getCipher(long,int,String)
+   */
   private final String type;
   /**
    * The cryptographic logic. This allows for providing your own implementation that will be used in an instance of the
@@ -34,6 +42,11 @@ abstract class AEncryption {
    * @see ACryptoLogic
    */
   protected final ACryptoLogic logic;
+  /**
+   * The cryptographic seed.
+   * @see AEncryption
+   * @see Long
+   */
   protected final long seed;
 
   /**
@@ -63,35 +76,30 @@ abstract class AEncryption {
    * @param i An {@link Integer} value, representing the cryptography "direction".
    * @param s A {@link String} object, representing the cryptography "key".
    * @return A {@link Cipher} instance.
+   * @throws java.security.NoSuchAlgorithmException
+   * @throws java.security.spec.InvalidKeySpecException
+   * @throws javax.crypto.NoSuchPaddingException
+   * @throws java.security.InvalidKeyException
+   * @throws java.security.InvalidAlgorithmParameterException
    * @see AEncryption
    * @see Encryption
    * @see Random
    * @see PBEParameterSpec
+   * @see PBEKeySpec
    * @see SecretKey
+   * @see SecretKeyFactory
    * @see Cipher
    */
-  protected final Cipher getCipher(long l, int i, String s) {
+  protected final Cipher getCipher(long l, int i, String s) throws NoSuchAlgorithmException, InvalidKeySpecException,
+      NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
     Random random = new Random(l);
     byte[] salt = new byte[8];
     random.nextBytes(salt);
     PBEParameterSpec pspecs = new PBEParameterSpec(salt, 5);
-    try {
-      SecretKey pbeKey = SecretKeyFactory.getInstance(type).generateSecret(new PBEKeySpec(s.toCharArray()));
-      Cipher cipher = Cipher.getInstance(type);
-      cipher.init(i, pbeKey, pspecs);
-      return cipher;
-    } catch(NoSuchAlgorithmException ex) {
-      AbcLogger.logThis(AbcLogger.L1, "NoSuchAlgorithmException", ex);
-    } catch(InvalidKeySpecException ex) {
-      AbcLogger.logThis(AbcLogger.L1, "InvalidKeySpecException", ex);
-    } catch(NoSuchPaddingException ex) {
-      AbcLogger.logThis(AbcLogger.L1, "NoSuchPaddingException", ex);
-    } catch(InvalidKeyException ex) {
-      AbcLogger.logThis(AbcLogger.L1, "InvalidKeyException", ex);
-    } catch(InvalidAlgorithmParameterException ex) {
-      AbcLogger.logThis(AbcLogger.L1, "InvalidAlgorithmParameterException", ex);
-    }
-    return null;
+    SecretKey pbeKey = SecretKeyFactory.getInstance(type).generateSecret(new PBEKeySpec(s.toCharArray()));
+    Cipher cipher = Cipher.getInstance(type);
+    cipher.init(i, pbeKey, pspecs);
+    return cipher;
   }
 
   /**
@@ -101,9 +109,18 @@ abstract class AEncryption {
    * The {@link Encryption#cryptoLoad(File,ACryptoLogic,String)} implementation closes the input stream.
    * @param f A {@link File} object, representing the source file.
    * @param s A {@link String} object, representing the cipher key to use.
+   * @throws java.security.NoSuchAlgorithmException
+   * @throws java.security.spec.InvalidKeySpecException
+   * @throws javax.crypto.NoSuchPaddingException
+   * @throws java.security.InvalidKeyException
+   * @throws java.security.InvalidAlgorithmParameterException
+   * @throws java.io.FileNotFoundException
    * @see AEncryption
+   * @see #performEncrypting(File,String) performEncrypting(File,String)
    */
-  abstract protected void performDecrypting(File f, String s);
+  abstract protected void performDecrypting(File f, String s) throws NoSuchAlgorithmException, InvalidKeySpecException,
+      NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, FileNotFoundException,
+      IOException;
 
   /**
    * Perform a cryptographic save operation. This method uses the {@link #logic logic} object, which should have been
@@ -112,7 +129,16 @@ abstract class AEncryption {
    * The {@link Encryption#cryptoSave(File,ACryptoLogic,String)} implementation flushes and closes the output stream.
    * @param f A {@link File} object, representing the target file.
    * @param s A {@link String} object, representing the cipher key to use.
+   * @throws java.security.NoSuchAlgorithmException
+   * @throws java.security.spec.InvalidKeySpecException
+   * @throws javax.crypto.NoSuchPaddingException
+   * @throws java.security.InvalidKeyException
+   * @throws java.security.InvalidAlgorithmParameterException
+   * @throws java.io.FileNotFoundException
    * @see AEncryption
+   * @see #performDecrypting(File,String) performDecrypting(File,String)
    */
-  abstract protected void performEncrypting(File f, String s);
+  abstract protected void performEncrypting(File f, String s) throws NoSuchAlgorithmException, InvalidKeySpecException,
+      NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, FileNotFoundException,
+      IOException;
 }

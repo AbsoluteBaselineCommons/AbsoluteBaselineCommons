@@ -3,8 +3,9 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableVersionGameCore</h2>
+ * A callable version report of the JVM vendor.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableVersionJavaVMVendor implements Callable<String> {
   @Override

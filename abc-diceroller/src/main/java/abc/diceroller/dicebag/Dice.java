@@ -5,10 +5,30 @@ import java.util.Random;
 /**
  * A dice-instance. This is also used in a "dice-bag" for complex automated rolls.
  * @author Gregory
+ * @see #random random
+ * @see #modifier modifier
+ * @see #sides sides
+ * @see #Dice() Dice()
+ * @see #Dice(int) Dice(int)
+ * @see #Dice(int,int) Dice(int,int)
+ * @see #roll() roll()
+ * @see #roll(int) roll(int)
  */
 public class Dice {
+  /**
+   * A randomizer.
+   * @see Dice
+   */
   private final Random random;
+  /**
+   * A roll modifier.
+   * @see Dice
+   */
   private final int modifier;
+  /**
+   * The number of sides.
+   * @see Dice
+   */
   private final int sides;
 
   {
@@ -18,6 +38,7 @@ public class Dice {
   /**
    * A public constructor. This turns this die instance into a "percentile" die; its roll will produce a result in the
    * range of one to one-hundred, as an integer.
+   * @see Dice
    */
   public Dice() {
     this(100);
@@ -50,8 +71,7 @@ public class Dice {
    * @return An {@link Integer} value.
    */
   public final int roll() {
-    return modifier
-        + (int)(Math.floor(random.nextFloat() * sides) + 1);
+    return modifier + (int)(Math.floor(random.nextFloat() * sides) + 1);
   }
 
   /**

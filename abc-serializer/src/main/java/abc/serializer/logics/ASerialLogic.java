@@ -14,6 +14,9 @@ import java.io.IOException;
  * infrastructure. That subclass will be given as a parameter of the {@link AbcSerialize} class methods to perform the
  * #performReading(ASerialLogic, File)
  * @author Gregory
+ * @see #ASerialLogic() ASerialLogic()
+ * @see #serialReading(DataInputStream) serialReading(DataInputStream)
+ * @see #serialWriting(DataOutputStream) serialWriting(DataOutputStream)
  * @see AbcSerialize
  */
 abstract public class ASerialLogic {
@@ -34,6 +37,7 @@ abstract public class ASerialLogic {
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dis A {@link DataInputStream} object, representing the stream to read.
    * @throws IOException on any file-io exceptions.
+   * @see ASerialLogic
    * @see #serialWriting(DataOutputStream) serialWriting(DataOutputStream)
    */
   abstract public void serialReading(DataInputStream dis) throws IOException;
@@ -45,6 +49,7 @@ abstract public class ASerialLogic {
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dos A {@link DataOutputStream} object, representing the stream to write.
    * @throws IOException on any file-io exceptions.
+   * @see ASerialLogic
    * @see #serialReading(DataInputStream) serialReading(DataInputStream)
    */
   abstract public void serialWriting(DataOutputStream dos) throws IOException;

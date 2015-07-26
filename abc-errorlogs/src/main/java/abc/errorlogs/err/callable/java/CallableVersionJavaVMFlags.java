@@ -7,8 +7,9 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableVersionGameCore</h2>
+ * A callable version report of the JVM flags.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableVersionJavaVMFlags implements Callable<String> {
   @Override

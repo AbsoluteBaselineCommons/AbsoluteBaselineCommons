@@ -3,8 +3,9 @@ import java.util.concurrent.Callable;
 
 
 /**
- * <h2>CallableAppVer</h2>
+ * A callable operating-system method. This outputs the OS name, architecture name, and version, all as a String value.
  * @author Gregory
+ * @see #call() call()
  */
 public class CallableSystem implements Callable<String> {
   @Override

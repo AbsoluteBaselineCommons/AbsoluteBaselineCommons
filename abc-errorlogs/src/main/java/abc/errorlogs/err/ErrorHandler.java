@@ -2,14 +2,15 @@ package abc.errorlogs.err;
 
 
 /**
- * <h2>ErrorHandler</h2>
+ * The error handler.
  * @author Gregory
  * @see #instance instance
  * @see #ErrorHandler ErrorHandler
  */
 public class ErrorHandler {
   /**
-   * The default {@link ErrorHandler} instance.
+   * The default instance.
+   * @see ErrorHandler
    */
   public static final ErrorHandler instance;
 
@@ -17,6 +18,12 @@ public class ErrorHandler {
     instance = new ErrorHandler();
   }
 
+  /**
+   * A private constructor. Goes nowhere, does nothing.
+   * @see ErrorHandler
+   */
   private ErrorHandler() {
   }
+
+  //TODO: Fill out the "error-handler" methodology with fields and methods.
 }
