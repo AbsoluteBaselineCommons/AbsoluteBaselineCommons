@@ -2,19 +2,22 @@ package abc.constraint;
 
 
 /**
- *
+ * Float value constraint. This class has static methods to constrain a {@link Float} value in some specific ways.
  * @author Gregory
+ * @see Float
  */
 public class ConstrainFloat {
   private ConstrainFloat() {
   }
 
   /**
-   * Get whether a value is within a particular range.
+   * If a value is within a particular range.
    * @param val A {@link Float} value, representing the value to be tested against.
    * @param max A {@link Float} value, representing the maximum to be equal or less than.
    * @param min A {@link Float} value, representing the minimum to be equal or more than.
    * @return A {@link Boolean} value.
+   * @see ConstrainFloat
+   * @see Float
    */
   public static final boolean isFloatInside(float val, float max, float min) {
     return (val >= min) && (val <= max);
@@ -28,6 +31,8 @@ public class ConstrainFloat {
    * @param val A {@link Float} value, representing the value to be constrained.
    * @param max A {@link Float} value, representing the maximum value to not be more than.
    * @return A {@link Float} value.
+   * @see ConstrainFloat
+   * @see Float
    */
   public static final float constrainFloatMax(float val, float max) {
     return (val > max) ? max : val;
@@ -41,6 +46,8 @@ public class ConstrainFloat {
    * @param val A {@link Float} value, representing the value to be constrained.
    * @param min A {@link Float} value, representing the minimum value to not be less than.
    * @return A {@link float} value.
+   * @see ConstrainFloat
+   * @see Float
    */
   public static final float constrainFloatMin(float val, float min) {
     return (val < min) ? min : val;
@@ -59,6 +66,8 @@ public class ConstrainFloat {
    * @param min A {@link Float} value, representing the minimum value to not be less than.
    * @param alt A {@link Float} value, representing the digit to return if not outside the max/min ranges.
    * @return A {@link Float} value.
+   * @see ConstrainFloat
+   * @see Float
    */
   public static final float constrainFloatOuter(float val, float max, float min, float alt) {
     return (val > max) ? max : (val < min) ? min : alt;
@@ -77,6 +86,8 @@ public class ConstrainFloat {
    * @param max A {@link Float} value, representing the maximum value to not be more than.
    * @param min A {@link Float} value, representing the minimum value to not be less than.
    * @return A {@link Float} value.
+   * @see ConstrainFloat
+   * @see Float
    */
   public static final float constrainFloatRange(float val, float max, float min) {
     return (val > max) ? max : (val < min) ? min : val;

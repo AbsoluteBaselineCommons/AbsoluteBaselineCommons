@@ -2,19 +2,22 @@ package abc.constraint;
 
 
 /**
- * Constrain an integer value.
+ * Integer value constraint. This class has static methods to constrain an {@link Integer} value in some specific ways.
  * @author Gregory
+ * @see Integer
  */
 public class ConstrainInteger {
   private ConstrainInteger() {
   }
 
   /**
-   * Get whether a value is within a particular range.
+   * If a value is within a particular range.
    * @param val An {@link Integer} value, representing the value to be tested against.
    * @param max An {@link Integer} value, representing the maximum to be equal or less than.
    * @param min An {@link Integer} value, representing the minimum to be equal or more than.
    * @return A {@link Boolean} value.
+   * @see ConstrainInteger
+   * @see Integer
    */
   public static final boolean isIntegerInside(int val, int max, int min) {
     return (val >= min) && (val <= max);
@@ -28,6 +31,8 @@ public class ConstrainInteger {
    * @param val An {@link Integer} value, representing the value to be constrained.
    * @param max An {@link Integer} value, representing the maximum value to not be more than.
    * @return An {@link Integer} value.
+   * @see ConstrainInteger
+   * @see Integer
    */
   public static final int constrainIntegerMax(int val, int max) {
     return (val > max) ? max : val;
@@ -41,6 +46,8 @@ public class ConstrainInteger {
    * @param val An {@link Integer} value, representing the value to be constrained.
    * @param min An {@link Integer} value, representing the minimum value to not be less than.
    * @return An {@link Integer} value.
+   * @see ConstrainInteger
+   * @see Integer
    */
   public static final int constrainIntegerMin(int val, int min) {
     return (val < min) ? min : val;
@@ -59,6 +66,8 @@ public class ConstrainInteger {
    * @param min An {@link Integer} value, representing the minimum value to not be less than.
    * @param alt An {@link Integer} value, representing the digit to return if not outside the max/min ranges.
    * @return An {@link Integer} value.
+   * @see ConstrainInteger
+   * @see Integer
    */
   public static final int constrainIntegerOuter(int val, int max, int min, int alt) {
     return (val > max) ? max : (val < min) ? min : alt;
@@ -77,6 +86,8 @@ public class ConstrainInteger {
    * @param max An {@link Integer} value, representing the maximum value to not be more than.
    * @param min An {@link Integer} value, representing the minimum value to not be less than.
    * @return An {@link Integer} value.
+   * @see ConstrainInteger
+   * @see Integer
    */
   public static final int constrainIntegerRange(int val, int max, int min) {
     return (val > max) ? max : (val < min) ? min : val;

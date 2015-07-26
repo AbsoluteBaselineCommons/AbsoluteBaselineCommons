@@ -2,19 +2,22 @@ package abc.constraint;
 
 
 /**
- * Constrain a double value.
+ * Double value constraint. This class has static methods to constrain a {@link Double} value in some specific ways.
  * @author Gregory
+ * @see Double
  */
 public class ConstrainDouble {
   private ConstrainDouble() {
   }
 
   /**
-   * Get whether a value is within a particular range.
+   * If a value is within a particular range.
    * @param val A {@link Double} value, representing the value to be tested against.
    * @param max A {@link Double} value, representing the maximum to be equal or less than.
    * @param min A {@link Double} value, representing the minimum to be equal or more than.
    * @return A {@link Boolean} value.
+   * @see ConstrainDouble
+   * @see Double
    */
   public static final boolean isDoubleInside(double val, double max, double min) {
     return (val >= min) && (val <= max);
@@ -28,6 +31,8 @@ public class ConstrainDouble {
    * @param val A {@link Double} value, representing the value to be constrained.
    * @param max A {@link Double} value, representing the maximum value to not be more than.
    * @return A {@link Double} value.
+   * @see ConstrainDouble
+   * @see Double
    */
   public static final double constrainDoubleMax(double val, double max) {
     return (val > max) ? max : val;
@@ -41,6 +46,8 @@ public class ConstrainDouble {
    * @param val A {@link Double} value, representing the value to be constrained.
    * @param min A {@link Double} value, representing the minimum value to not be less than.
    * @return A {@link Double} value.
+   * @see ConstrainDouble
+   * @see Double
    */
   public static final double constrainDoubleMin(double val, double min) {
     return (val < min) ? min : val;
@@ -59,6 +66,8 @@ public class ConstrainDouble {
    * @param min A {@link Double} value, representing the minimum value to not be less than.
    * @param alt A {@link Double} value, representing a digit to return if not outside the max/min ranges.
    * @return A {@link Double} value.
+   * @see ConstrainDouble
+   * @see Double
    */
   public static final double constrainDoubleOuter(double val, double max, double min, double alt) {
     return (val > max) ? max : (val < min) ? min : alt;
@@ -79,6 +88,8 @@ public class ConstrainDouble {
    * @param max A {@link Double} value, representing the maximum value to not be more than.
    * @param min A {@link Double} value, representing the minimum value to not be less than.
    * @return A {@link Double} value.
+   * @see ConstrainDouble
+   * @see Double
    */
   public static final double constrainDoubleRange(double val, double max, double min) {
     return (val > max) ? max : (val < min) ? min : val;

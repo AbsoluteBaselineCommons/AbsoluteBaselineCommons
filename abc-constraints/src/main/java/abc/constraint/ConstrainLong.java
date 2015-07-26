@@ -2,19 +2,22 @@ package abc.constraint;
 
 
 /**
- * Constrain a long value. This class has static methods to constrain a {@link Long} value in some specific ways.
+ * Long value constraint. This class has static methods to constrain a {@link Long} value in some specific ways.
  * @author Gregory
+ * @see Long
  */
 public class ConstrainLong {
   private ConstrainLong() {
   }
 
   /**
-   * Get whether a value is within a particular range.
+   * If a value is within a particular range.
    * @param val A {@link Long} value, representing the value to be tested against.
    * @param max A {@link Long} value, representing the maximum to be equal or less than.
    * @param min A {@link Long} value, representing the minimum to be equal or more than.
    * @return A {@link Boolean} value.
+   * @see ConstrainLong
+   * @see Long
    */
   public static final boolean isLongInside(long val, long max, long min) {
     return (val >= min) && (val <= max);
@@ -28,6 +31,8 @@ public class ConstrainLong {
    * @param val A {@link Long} value, representing the value to be constrained.
    * @param max A {@link Long} value, representing the maximum value to not be more than.
    * @return A {@link Long} value.
+   * @see ConstrainLong
+   * @see Long
    */
   public static final long constrainLongMax(long val, long max) {
     return (val > max) ? max : val;
@@ -41,6 +46,8 @@ public class ConstrainLong {
    * @param val A {@link Long} value, representing the value to be constrained.
    * @param min A {@link Long} value, representing the minimum value to not be less than.
    * @return A {@link Long} value.
+   * @see ConstrainLong
+   * @see Long
    */
   public static final long constrainLongMin(long val, long min) {
     return (val < min) ? min : val;
@@ -59,6 +66,8 @@ public class ConstrainLong {
    * @param min A {@link Long} value, representing the minimum value to not be less than.
    * @param alt A {@link Long} value, representing the digit to return if not outside the max/min ranges.
    * @return A {@link Long} value.
+   * @see ConstrainLong
+   * @see Long
    */
   public static final long constrainLongOuter(long val, long max, long min, long alt) {
     return (val > max) ? max : (val < min) ? min : alt;
@@ -75,6 +84,8 @@ public class ConstrainLong {
    * @param max A {@link Long} value, representing the maximum value to not be more than.
    * @param min A {@link Long} value, representing the minimum value to not be less than.
    * @return A {@link Long} value.
+   * @see ConstrainLong
+   * @see Long
    */
   public static final long constrainLongRange(long val, long max, long min) {
     return (val > max) ? max : (val < min) ? min : val;
