@@ -26,7 +26,7 @@ public class CallableBaseIntroduction implements Callable<String> {
     String output = "";
     output += "======================================== CREATE TRANSMISSION ========================================\n";
     for(String string : strings) {
-      output += String.format("%s\n", bundle.getString(string));
+      output += String.format("%s%n", bundle.getString(string));
     }
     output += "======================================== FINISH TRANSMISSION ========================================\n";
     return output;
