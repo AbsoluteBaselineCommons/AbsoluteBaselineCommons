@@ -24,13 +24,5 @@ task mergedJavadoc(type:Javadoc, description:'Creates Javadoc from all the proje
 }
 
 task wrapper(type:Wrapper, description:'Creates and deploys the Gradle wrapper to the current directory.') {
-  gradleVersion = '2.4'
-}
-
-uploadArchives {
-  repositories {
-    maven {
-      url "../AbsoluteBaselineCommons.github.io/repository/"
-    }
-  }
+  gradleVersion = '2.5'
 }
