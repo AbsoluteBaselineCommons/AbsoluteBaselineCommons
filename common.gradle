@@ -2,21 +2,19 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-String mavenGroupId = 'abc.core'
-String mavenVersion = '0.1'
+String mavenGroupId = rootProject.group
+String mavenVersion = rootProject.version
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 repositories {
-  //  http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:repositories
-  mavenLocal();
-  mavenCentral();
+  mavenLocal()
+  mavenCentral()
 }
 
 dependencies {
-  // Adding dependencies here will add the dependencies to each subproject.
   testCompile 'junit:junit:4.10'
 }
 
