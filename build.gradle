@@ -4,7 +4,7 @@ apply plugin:'base' // To add "clean" task to the root project.
 apply plugin:'maven'
 
 group = 'abc.core'
-version = '0.1'
+version = '0.2'
 
 subprojects {
   apply from:rootProject.file('common.gradle')

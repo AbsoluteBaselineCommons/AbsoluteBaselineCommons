@@ -1,0 +1,19 @@
+The list of changes to the source code (if I remember to put changes here...):
+
+
+0.2  -- 2015/09/14 and on.
+
+  - Added 'abc.constraint.ConstraintCommon', a class with static methods common to many constraint functionalities that
+      do not belong in the other typed constraint classes.
+
+
+0.1  -- anything before 2015/09/14
+
+  - Various changes great and small from the beginning of the project. Really; I'm not going back through my repository
+      commits to list them....
+
+
+0.0  -- oh I forget when.
+
+  - Project initialization. I've been working on these since before I found Gradle; but I converted to the Gradle build
+      system sometime after Gradle 2.1 or so.
