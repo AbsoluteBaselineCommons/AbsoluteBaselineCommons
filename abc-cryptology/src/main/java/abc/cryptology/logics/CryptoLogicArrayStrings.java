@@ -12,7 +12,7 @@ import java.io.IOException;
  * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
  * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
-public class CryptoLogicArrayStrings extends ACryptoLogic {
+public class CryptoLogicArrayStrings extends Crypto {
   /**
    * A string array.
    * @see CryptoLogicArrayStrings

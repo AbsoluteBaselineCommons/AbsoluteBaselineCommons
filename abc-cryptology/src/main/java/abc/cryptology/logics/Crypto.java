@@ -16,19 +16,19 @@ import java.io.IOException;
  * <p/>
  * Besides the above two methods defined herein, do we also need to provide for key unwrapping and key wrapping?
  * @author Gregory
- * @see #ACryptoLogic() ACryptoLogic()
+ * @see #Crypto() Crypto()
  * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
  * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
-abstract public class ACryptoLogic {
+abstract public class Crypto {
   /**
    * A public constructor. This does nothing; it only exists in case I want to add anything (at this point, unnecessary
    * for overall operation).
    * <p/>
    * See the javadoc in this abstract class, for general cautions and warnings.
-   * @see ACryptoLogic
+   * @see Crypto
    */
-  public ACryptoLogic() {
+  public Crypto() {
   }
 
   /**
@@ -38,7 +38,7 @@ abstract public class ACryptoLogic {
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dis A {@link DataInputStream} object, representing the stream to read.
    * @throws IOException on any file-IO exceptions.
-   * @see ACryptoLogic
+   * @see Crypto
    * @see #performEncryption(DataOutputStream) performEncryption(DataOutputStream)
    */
   abstract public void performDecryption(DataInputStream dis) throws IOException;
@@ -50,7 +50,7 @@ abstract public class ACryptoLogic {
    * See the javadoc in this abstract class, for general cautions and warnings.
    * @param dos A {@link DataOutputStream} object, representing the stream to write.
    * @throws java.io.IOException on any file-IO exceptions.
-   * @see ACryptoLogic
+   * @see Crypto
    * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
    */
   abstract public void performEncryption(DataOutputStream dos) throws IOException;

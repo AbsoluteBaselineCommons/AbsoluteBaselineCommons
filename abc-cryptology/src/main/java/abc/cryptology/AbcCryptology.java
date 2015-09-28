@@ -1,5 +1,5 @@
 package abc.cryptology;
-import abc.cryptology.logics.ACryptoLogic;
+import abc.cryptology.logics.Crypto;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,23 +12,23 @@ import javax.crypto.NoSuchPaddingException;
 
 /**
  * A cryptology implementation. This static class defines the methodology of a plain-Java cryptology implementation.
- * <h3>Final Note</h3>
- * Originally from MrDeathJockey's YouTube video, named "Enhanced String encryption with PBE, DES and MD5 - Java
- * Intermediate Tutorial #18", the contents of the {@link Encryption} class was heavily modified to be what it is now. I
- * have tweaked several things: I created an abstract class AEncryption to be the parent of Encryption to introduce a
- * level of abstraction.
- * <p/>
- * Link to the YouTube video: https://youtu.be/NpaUuEvKXqs?list=PL7EB0FF7711646514
+ * <h1>Final Note</h1>
+ * Originally by MrDeathJockey's YouTube video, <a href="https://youtu.be/NpaUuEvKXqs?list=PL7EB0FF7711646514">Enhanced
+ * String encryption with PBE, DES and MD5 - Java Intermediate Tutorial #18</a>", several cryptology classes were quite
+ * heavily modified to be what they are now. Many things have been tweaked: made the abstract class {@link Encryption}
+ * to be the parent of {@link EncryptionBase} to introduce the level of abstraction, then created that EncryptionBase
+ * class to provide the utility methodology.
  * @author Gregory
  * @see #instance instance
  * @see #AbcCryptology() AbcCryptology()
- * @see #performDecryption(long,ACryptoLogic,String,File,String) performDecryption(long,ACryptoLogic,String,File,String)
- * @see #performEncryption(long,ACryptoLogic,String,File,String) performEncryption(long,ACryptoLogic,String,File,String)
+ * @see #performDecryption(long,Crypto,String,File,String) performDecryption(long,Crypto,String,File,String)
+ * @see #performEncryption(long,Crypto,String,File,String) performEncryption(long,Crypto,String,File,String)
  */
 public class AbcCryptology {
   /**
    * The default {@link AbcCryptology} instance.
    * @see AbcCryptology
+   * @see #AbcCryptology() AbcCryptology()
    */
   public static final AbcCryptology instance;
 
@@ -46,50 +46,52 @@ public class AbcCryptology {
   /**
    * Perform the decryption operation. This converts encrypted data into decrypted data, using a series of values.
    * <p/>
-   * The parameter for the cipher key can be any String value that Java Cryptography can use; however, the example from
-   * the class javadoc used "PBEWithMD5AndDES" as the implementation.
+   * The parameter for {@code t} (the cipher key) can be any String value that Java Cryptography can use; however, the
+   * example from the class javadoc used "PBEWithMD5AndDES" as the implementation.
    * @param l A {@link Long} value, representing a {@link #seed seed} value.
-   * @param c An {@link ACryptoLogic} object, representing the implementation.
-   * @param r A {@link String} object, representing the cryptographic type.
+   * @param c A {@link Crypto} object, representing the implementation.
+   * @param s A {@link String} object, representing the cryptographic type.
    * @param f A {@link File} object, representing the source file object.
-   * @param s A {@link String} object, representing the cipher key to use.
-   * @throws java.security.NoSuchAlgorithmException
-   * @throws java.security.spec.InvalidKeySpecException
-   * @throws javax.crypto.NoSuchPaddingException
-   * @throws java.security.InvalidKeyException
-   * @throws java.security.InvalidAlgorithmParameterException
-   * @throws java.io.FileNotFoundException
+   * @param t A {@link String} object, representing the cipher key to use.
+   * @throws NoSuchAlgorithmException
+   * @throws InvalidKeySpecException
+   * @throws NoSuchPaddingException
+   * @throws InvalidKeyException
+   * @throws InvalidAlgorithmParameterException
+   * @throws FileNotFoundException
    * @see AbcCryptology
+   * @see #performEncryption(long,Crypto,String,File,String)
    */
-  public final void performDecryption(long l, ACryptoLogic c, String r, File f, String s)
+  public final void performDecryption(long l, Crypto c, String s, File f, String t)
       throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException,
       InvalidAlgorithmParameterException, FileNotFoundException, IOException {
-    Encryption encryption = new Encryption(l, c, r);
-    encryption.performDecrypting(f, s);
+    EncryptionBase eb = new EncryptionBase(l, c, s);
+    eb.performDecrypting(f, t);
   }
 
   /**
    * Perform the encryption operation. This converts decrypted data into encrypted data, using a series of values.
    * <p/>
-   * The parameter for the cipher key can be any String value that Java Cryptography can use; however, the example from
-   * the class javadoc used "PBEWithMD5AndDES" as the implementation.
+   * The parameter for {@code t} (the cipher key) can be any String value that Java Cryptography can use; however, the
+   * example from the class javadoc used "PBEWithMD5AndDES" as the implementation.
    * @param l A {@link Long} value, representing a {@link #seed seed} value.
-   * @param c An {@link ACryptoLogic} object, representing the implementation.
-   * @param r A {@link String} object, representing the cryptographic type.
+   * @param c A {@link Crypto} object, representing the implementation.
+   * @param s A {@link String} object, representing the cryptographic type.
    * @param f A {@link File} object, representing the target file object.
-   * @param s A {@link String} object, representing the cipher key to use.
-   * @throws java.security.NoSuchAlgorithmException
-   * @throws java.security.spec.InvalidKeySpecException
-   * @throws javax.crypto.NoSuchPaddingException
-   * @throws java.security.InvalidKeyException
-   * @throws java.security.InvalidAlgorithmParameterException
-   * @throws java.io.FileNotFoundException
+   * @param t A {@link String} object, representing the cipher key to use.
+   * @throws NoSuchAlgorithmException
+   * @throws InvalidKeySpecException
+   * @throws NoSuchPaddingException
+   * @throws InvalidKeyException
+   * @throws InvalidAlgorithmParameterException
+   * @throws FileNotFoundException
    * @see AbcCryptology
+   * @see #performDecryption(long,Crypto,String,File,String)
    */
-  public final void performEncryption(long l, ACryptoLogic c, String r, File f, String s)
+  public final void performEncryption(long l, Crypto c, String s, File f, String t)
       throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException,
       InvalidAlgorithmParameterException, FileNotFoundException, IOException {
-    Encryption encryption = new Encryption(l, c, r);
-    encryption.performEncrypting(f, s);
+    EncryptionBase eb = new EncryptionBase(l, c, s);
+    eb.performEncrypting(f, t);
   }
 }

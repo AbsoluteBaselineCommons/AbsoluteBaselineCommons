@@ -1,0 +1,21 @@
+The list of changes to the source code (if I remember to put changes here...):
+
+
+0.2  -- 2015/09/14 and on.
+
+  - Refactor-rename AEncryption and Encryption into Encryption and EncryptionBase, respectively, for simplicity.
+  - Refactor-rename method signature parameters as well as local fields within some methods; no change to how they work.
+  - Improved or tweaked some javadoc comments to make more sense.
+  - MAJOR: renamed class ACryptoLogic to just Crypto for simplicity; all subclasses need to be refactored....
+
+
+0.1  -- anything before 2015/09/14
+
+  - Various changes great and small from the beginning of the project. Really; I'm not going back through my repository
+      commits to list them....
+
+
+0.0  -- oh I forget when.
+
+  - Project initialization. I've been working on these since before I found Gradle; but I converted to the Gradle build
+      system sometime after Gradle 2.1 or so.

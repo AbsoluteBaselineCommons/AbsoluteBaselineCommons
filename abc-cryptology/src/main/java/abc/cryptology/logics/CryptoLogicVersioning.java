@@ -18,7 +18,7 @@ import java.io.IOException;
  * @see #performDecryption(DataInputStream) performDecryption(DataInputStream)
  * @see #performEncryption(DataInputStream) performEncryption(DataInputStream)
  */
-public class CryptoLogicVersioning extends ACryptoLogic {
+public class CryptoLogicVersioning extends Crypto {
   /**
    * The versioning values. This encompasses the major, minor, release, and build of the data. Each byte initializes as
    * zero; it is up to the implementing classes to use this. The individual bytes in the array are:
@@ -36,7 +36,7 @@ public class CryptoLogicVersioning extends ACryptoLogic {
    * for overall operation).
    * <blockquote>See the javadoc in this abstract class, for general cautions and warnings.</blockquote>
    * @param bs A {@link Byte} array, representing the
-   * @see ACryptoLogic
+   * @see Crypto
    */
   public CryptoLogicVersioning(byte[] bs) {
     super();
