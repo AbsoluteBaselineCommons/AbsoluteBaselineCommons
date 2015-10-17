@@ -5,6 +5,7 @@ The list of changes to the source code (if I remember to put changes here...):
 
   - Added a CHANGES text file to each project.
   - Changes in 'abc-cryptology': refactoring, new classes, javadoc tweaks everywhere, etc.
+  - Added an "Auto-Update" module, to simplify and manage the automated updating of modules from a web page or folder.
 
 
 0.1  -- anything before 2015/09/14
